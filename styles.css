@@ -56,7 +56,7 @@
   .navlinks{display:flex; gap:32px; font-size:0.85rem;}
   .navlinks a{position:relative; padding:4px 0; font-family:'Zilla Slab', serif; color:var(--link-color); text-decoration:underline; text-underline-offset:3px;}
   a:focus-visible{outline:2px solid var(--link-color); outline-offset:3px; border-radius:2px;}
-  .about-text a, .footer-links a{
+  .about-text a, .footer-links a, .project-body a{
     font-family:'Zilla Slab', serif; color:var(--link-color); text-decoration:underline; text-underline-offset:3px;
   }
 
@@ -140,7 +140,7 @@
   .inline-media img{width:100%; border-radius:6px; border:1px solid var(--line); display:block;}
   .inline-media .media-caption{margin-bottom:0; max-width:none;}
   .stacked-media{display:flex; flex-direction:column; align-items:center;}
-  .stacked-media img{margin-bottom:12px; max-width:75%;}
+  .stacked-media img{margin-bottom:12px; width:100%;}
   .stacked-media img:last-of-type{margin-bottom:0;}
   .focus-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;
