@@ -12,7 +12,7 @@
     font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:0.78rem; color:var(--accent);
     letter-spacing:0.06em; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px;
   }
-  .project-hero{padding:56px 0 24px;}
+  .project-hero{padding-top:56px; padding-bottom:24px;}
   .project-hero h2.project-title{font-size:2.4rem; margin-top:18px;}
   .next-project{
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
@@ -57,7 +57,13 @@
 <section class="section" id="crunchylists-case-study" style="padding-top:24px;">
   <div class="wrap">
     <div class="project-body">
-      <p class="reveal">Submitted by a small, globally distributed team I assembled that included myself, a product manager, another product designer from LA, and three engineers from Mexico City. Our goal was to bring a stronger sense of community back to the Crunchyroll platform. The feature is currently in development.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; width:100%;">
+        <p class="reveal" style="margin:0;">Submitted by a small, globally distributed team I assembled that included myself, a product manager, another product designer from LA, and three engineers from Mexico City. Our goal was to bring a stronger sense of community back to the Crunchyroll platform. The feature is currently in development.</p>
+        <div class="inline-media reveal" style="margin:0;">
+          <img src="hackplat.jpeg" alt="Team Hack Platinum accepting the 1st place hackathon prize" style="width:100%; display:block;">
+          <p class="media-caption">First Place Winners Team Hack Platinum, 2025</p>
+        </div>
+      </div>
 
       <div class="problem-block">
         <svg class="blob parallax" data-speed="0.15" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -67,26 +73,24 @@
         <p class="reveal">Fans had no way on the platform to share and introduce friends to their favourite content. We found that users with even a few items on their Watchlist were 30% more likely to stay subscribed and keep watching. We wanted to make that list-building behavior public-facing and shareable, to drive both acquisition and retention.</p>
       </div>
 
-      <div style="display:flex; gap:32px; align-items:center; flex-wrap:wrap;">
-        <div class="inline-media" style="flex:0 1 500px; margin:0;">
-          <img src="profiles.webp" alt="Public profile pages showcasing user-generated Crunchylists" style="display:block; border-radius:6px; max-width:100%;">
-        </div>
-        <div class="solution-block" style="flex:1; min-width:220px; max-width:300px;">
-          <svg class="blob parallax" data-speed="-0.12" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path fill="var(--accent)" opacity="0.16" d="M52.4,-63.9C66.8,-53.5,76.6,-36.4,79.6,-18.4C82.6,-0.4,78.8,18.5,69.4,33.9C60,49.3,45,61.2,28,68.6C11,76,-8,78.9,-25.3,73.9C-42.6,68.9,-58.2,56,-67.8,39.6C-77.4,23.2,-81,3.3,-77.1,-14.9C-73.2,-33.1,-61.8,-49.6,-46.9,-59.8C-32,-70,-13.6,-73.9,3.8,-79C21.2,-84.1,38,-74.3,52.4,-63.9Z" transform="translate(100 100)" />
-          </svg>
-          <h4 class="reveal" style="margin-top:0;">The Solution</h4>
-          <p class="reveal" style="margin-bottom:0;">Our team proposed leveraging the platform's under-utilized profile pages to showcase public lists whenever a user opted in. Shareable, user-generated lists could then surface across high-traffic pages: the home feed, search, and series pages, giving fans a new avenue for discovery through curators they trusted. An added bonus that tipped the scale was providing a way to spotlight celebrity and influencer lists that would build trust across the fandom.</p>
-        </div>
+      <div class="inline-media" style="margin:0 0 32px;">
+        <img src="profiles.webp" alt="Public profile pages showcasing user-generated Crunchylists" style="display:block; border-radius:6px; width:100%;">
+      </div>
+      <div class="solution-block">
+        <svg class="blob parallax" data-speed="-0.12" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="left:-70px; right:auto;">
+          <path fill="var(--accent)" opacity="0.16" d="M52.4,-63.9C66.8,-53.5,76.6,-36.4,79.6,-18.4C82.6,-0.4,78.8,18.5,69.4,33.9C60,49.3,45,61.2,28,68.6C11,76,-8,78.9,-25.3,73.9C-42.6,68.9,-58.2,56,-67.8,39.6C-77.4,23.2,-81,3.3,-77.1,-14.9C-73.2,-33.1,-61.8,-49.6,-46.9,-59.8C-32,-70,-13.6,-73.9,3.8,-79C21.2,-84.1,38,-74.3,52.4,-63.9Z" transform="translate(100 100)" />
+        </svg>
+        <h4 class="reveal" style="margin-top:0;">The Solution</h4>
+        <p class="reveal" style="margin-bottom:0;">Our team proposed leveraging the platform's under-utilized profile pages to showcase public lists whenever a user opted in. Shareable, user-generated lists could then surface across high-traffic pages: the home feed, search, and series pages, giving fans a new avenue for discovery through curators they trusted. An added bonus that tipped the scale was providing a way to spotlight celebrity and influencer lists that would build trust across the fandom.</p>
       </div>
 
-      <div style="display:flex; gap:32px; align-items:center; flex-wrap:wrap; margin-top:88px;">
-        <div style="max-width:350px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; margin-top:88px; width:100%;">
+        <div style="min-width:0;">
           <h4 class="reveal" style="margin-top:0;">The AI Requirement</h4>
           <p class="reveal" style="margin-bottom:0;">The 2025 Hackathon's core requirement was to build AI directly into the feature. Our team used it to moderate user-generated lists. Assisting with naming conventions, keeping compositions licensor-friendly, applying genre and keyword tagging, and surfacing additional content suggestions.</p>
         </div>
-        <div class="inline-media" style="flex:1; min-width:220px; margin:0;">
-          <img src="mylists.png" alt="My Lists screen showing My Crunchylists tab with user-generated lists" style="max-height:510px; width:auto; margin:0 auto; display:block;">
+        <div class="inline-media" style="margin:0;">
+          <img src="mylists.png" alt="My Lists screen showing My Crunchylists tab with user-generated lists" style="max-height:510px; width:auto; max-width:100%; margin:0 auto; display:block;">
         </div>
       </div>
 
