@@ -211,7 +211,7 @@
 
       <h4 class="reveal" id="considerationsHeader" style="position:sticky; top:70px; margin-top:56px; margin-bottom:32px;">Key Considerations</h4>
 
-      <div class="parallax-wrap" id="pxWrap" style="position:relative; height:2400px;">
+      <div class="parallax-wrap" id="pxWrap" style="position:relative; height:3600px;">
         <div class="parallax-sticky" style="position:sticky; top:120px; overflow:hidden;">
           <div id="pxGroupA">
             <div style="display:flex; gap:56px; flex-wrap:wrap; margin-bottom:20px;">
@@ -246,18 +246,20 @@
               <p class="media-caption">Living Room Shop UI</p>
             </div>
           </div>
+
+          <div id="pxGroupC" style="position:absolute; top:0; left:0; width:100%;">
+            <div class="consideration-item reveal">
+              <h5>Lifecycle Awareness</h5>
+              <p>Design for where both the user and the show are in their lifecycle: a brand-new viewer discovering a completed series needs something different than a long-time fan following a simulcast week to week.</p>
+            </div>
+            <div class="inline-media reveal" style="margin-top:20px;">
+              <img src="series-end.webp" alt="Series page desktop web UI upon completion of a series">
+              <p class="media-caption">Desktop Web UI - Upon Completion of a Series</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div id="lifecycleSection" class="consideration-item reveal" style="max-width:700px; margin-top:16px;">
-        <h5>Lifecycle Awareness</h5>
-        <p>Design for where both the user and the show are in their lifecycle: a brand-new viewer discovering a completed series needs something different than a long-time fan following a simulcast week to week.</p>
-      </div>
-
-      <div class="inline-media reveal" style="margin-top:16px;">
-        <img src="series-end.webp" alt="Series page desktop web UI upon completion of a series">
-        <p class="media-caption">Desktop Web UI - Upon Completion of a Series</p>
-      </div>
     </div>
   </div>
 </section>
@@ -358,8 +360,12 @@
     if(!wrap) return;
     var groupA = document.getElementById('pxGroupA');
     var groupB = document.getElementById('pxGroupB');
+    var groupC = document.getElementById('pxGroupC');
+    var header = document.getElementById('considerationsHeader');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var ticking = false;
+
+    function ease(t){ return t * t * (3 - 2 * t); }
 
     function update(){
       var rect = wrap.getBoundingClientRect();
@@ -367,23 +373,31 @@
       var scrollable = wrap.offsetHeight - viewportH;
       var scrolled = -rect.top;
       var raw = scrollable > 0 ? Math.max(0, Math.min(1, scrolled / scrollable)) : 0;
-      var progress = raw * raw * (3 - 2 * raw);
+
+      var rawAB = Math.max(0, Math.min(1, raw / 0.5));
+      var rawBC = Math.max(0, Math.min(1, (raw - 0.5) / 0.5));
+      var progressAB = ease(rawAB);
+      var progressBC = ease(rawBC);
 
       if(reduceMotion){
         groupB.style.transform = 'translateY(0)';
-        groupA.style.opacity = progress > 0.5 ? 0 : 1;
+        groupC.style.transform = 'translateY(0)';
+        groupA.style.opacity = raw > 0.25 ? 0 : 1;
+        groupB.style.opacity = raw > 0.75 ? 0 : 1;
+        if(header) header.style.position = raw >= 1 ? 'static' : 'sticky';
         ticking = false;
         return;
       }
 
-      groupB.style.transform = 'translateY(' + ((1 - progress) * viewportH) + 'px)';
-      groupA.style.opacity = 1 - progress;
-      groupA.style.transform = 'translateY(' + (progress * -60) + 'px)';
-      var header = document.getElementById('considerationsHeader');
-      var lifecycleSection = document.getElementById('lifecycleSection');
-      if(header && lifecycleSection){
-        var lifecycleRect = lifecycleSection.getBoundingClientRect();
-        header.style.position = lifecycleRect.top <= 70 ? 'static' : 'sticky';
+      groupB.style.transform = 'translateY(' + ((1 - progressAB) * viewportH) + 'px)';
+      groupA.style.opacity = 1 - progressAB;
+      groupA.style.transform = 'translateY(' + (progressAB * -60) + 'px)';
+
+      groupC.style.transform = 'translateY(' + ((1 - progressBC) * viewportH) + 'px)';
+      groupB.style.opacity = 1 - progressBC;
+
+      if(header){
+        header.style.position = raw >= 1 ? 'static' : 'sticky';
       }
       ticking = false;
     }
